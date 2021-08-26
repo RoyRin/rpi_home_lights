@@ -26,6 +26,7 @@ then go back to sleep, like you’ve done 100 times before. Only now, you’ll f
 doing it.
 
 Is it worth it: Likely.
+
 ------------------------------------------------------------
 
 
@@ -70,30 +71,31 @@ electronics – you gotta do what you gotta do.
 
 2. So now, my Raspberry Pi GPIO (pin in/outs) are connected to an IR LED, so now we need to 
 tell them what to do.
-You can find most of these patterns for any IR remote controller at [LIRC.org](http://www.lirc.org/html/lircd.html ) which basically tells you the IR "codes" for nearly any kind of controllers. To find the IR controls for your particular remote you may have to  search the internet for a little bit, but If you want to use the same LEDS at the one that I posted, you can find the config file attached on the forum : https://sourceforge.net/p/lircremotes/mailman/lirc-remotes-users/?viewmonth=201503 (just ctrl-f for “lirc44.conf”). 
+You can find most of these patterns for any IR remote controller at [LIRC.org](http://www.lirc.org/html/lircd.html ) which basically tells you the IR "codes" for nearly any kind of controllers. To find the IR controls for your particular remote you may have to  search the internet for a little bit, but If you want to use the same LEDS at the one that I posted, you can find the config file attached on the [sourceforge forum](https://sourceforge.net/p/lircremotes/mailman/lirc-remotes-users/?viewmonth=201503) (you can ctrl-f for “lirc44.conf”). 
 Now, you need to set up “lirc” on your Raspberry Pi, to be able to interpret those codes that 
 you just found.
 
 
+### Setting up LIRC 
 Here is a nice tutorial for how to set up [LIRC on your Raspberry Pi](http://alexba.in/blog/2013/01/06/setting-up-lirc-on-the-raspberrypi/).
+
 1. Now you can control your lights from your home computer, by ssh-ing into your raspberry 
 pi, then typing in the command irsend SEND_ONCE LED_44_KEY POWER. Or any name
 you want in place of “Power”, as it is written in your .conf file. (This should all be explained in
 the LIRC webpage).
-2. Now I wrote a nice Python program, so that it would do a chain of events one after another 
-(I’ve copied the code into the end of this document).
-And now we are nearly done. 
+2. Here's an [example Python program](https://github.com/RoyRin/rpi_home_lights/blob/main/lights.py).
+
 3. Crontab is a program that will allow you to schedule events on linux (i.e. run some program 
 every 5 minutes, or every Friday at 6:01 pm). [Install crontab as instructed here](https://www.raspberrypi.org/documentation/linux/usage/cron.md).
 Then type in `crontab –e` into terminal
 And you can set your own schedule:
-
-And Ta Da! You have a light-alarm clock!
------
-
-Note: If you want to incorporate sounds into this, it’s very easy, since nearly all Raspberry 
-Pi’s (with the exception of the Zero) have a headphone jack (or bluetooth). And you can easily write into your code to play a sound from a saved file on your computer. 
-We leave this as an exercise for  the reader. 
-
-Python 3 code:
-
+    ```
+    #min hour dayofMonth month(1-31) dayofWeek(0-6) ./CommandToDo
+    20 7 * * 1 python ./Python3Programs/alarmclock.py # JOB_ID_1 monday
+    40 8 * * 2 python ./Python3Programs/alarmclock.py # JOB_ID_1 tuesday
+    40 8 * * 3 python ./Python3Programs/alarmclock.py # JOB_ID_1 wednesday
+    40 8 * * 4 python ./Python3Programs/alarmclock.py # JOB_ID_1 thursda
+    30 8 * * 5 python ./Python3Programs/alarmclock.py # JOB_ID_1 friday
+    20 9 * * 6 python ./Python3Programs/alarmclock.py # JOB_ID_1 Saturday
+    #05 9 * * 7 python ./Python3Programs/alarmclock.py # JOB_ID_1 Sunday
+    ```
