@@ -3,7 +3,7 @@
 
 In 2016, I moved to my first apartment in NYC. To truly embrace living in NYC, I decided to go all in, and rent an apartment where my room did not have a window. In order to prevent my circadian rhythm from going completely haywire, I decided to make my Raspberry Pi control my sound and lights system, and act as a sunrise in the morning Here's an outline of how I went about connecting my system.
 
-![lights]({{site.url}}/assets/projects/rpi/lights.png)
+![lights](https://github.com/RoyRin/rpi_home_lights/blob/main/pictures/lights.png)
 
 ## Parts List:
 ### Required:
@@ -32,7 +32,7 @@ Is it worth it: Likely.
 ## Raspberry Pi Set up: 
 (There are plenty of resources on the internet that go into greater detail about how to set up and connect to your Raspberry Pi).
 
-![rpi]({{site.url}}/assets/projects/rpi/rpi.png)
+![rpi](https://github.com/RoyRin/rpi_home_lights/blob/main/pictures/rpi.png)
 
 From there you can very easily connect from your laptop, into the Raspberry Pi to 
 tell it commands (using ssh) so at that point I have a Raspberry Pi which I can control from 
@@ -45,7 +45,7 @@ It doesn’t really matter what LEDS you buy, as long as they have some IR remot
 recommend these lights regardless, because they are nice even if you don’t do this entire 
 project.
 
-![remote]({{site.url}}/assets/projects/rpi/remote.png)
+![remote](https://github.com/RoyRin/rpi_home_lights/blob/main/pictures/remote.png)
 
 I recommend get Velcro packs, so that you can hang up the remote around the room.
 
@@ -66,7 +66,7 @@ connecting your LED to a pull up resistor is fine. (Namely, 5V to Resistor, to L
 18, and then controlling pin out 18). That being said, I’m not responsible for your 
 electronics – you gotta do what you gotta do. 
 
-![IR_led]({{site.url}}/assets/projects/rpi/IR_led.png)
+![IR_led](https://github.com/RoyRin/rpi_home_lights/blob/main/pictures/IR_led.png)
 
 2. So now, my Raspberry Pi GPIO (pin in/outs) are connected to an IR LED, so now we need to 
 tell them what to do.
